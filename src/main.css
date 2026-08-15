@@ -1,107 +1,971 @@
+/* ============================================================
+   Alon Belker — automation developer
+   Brand: #BAC5D9  #24292C  #1C66A6  #465902  #A7BF50
+   ============================================================ */
+
+/* ---------- Tokens ---------- */
 :root {
-    --mocha: #a09e9f;
+  /* Brand */
+  --slate:      #24292C;   /* ground */
+  --mist:       #BAC5D9;   /* body text */
+  --signal:     #1C66A6;   /* structural blue */
+  --moss:       #465902;   /* deep olive */
+  --lime:       #A7BF50;   /* live accent */
+
+  /* Derived surfaces */
+  --ground:     #1A1E20;
+  --surface:    #24292C;
+  --surface-2:  #2C3236;
+  --line:       rgba(186, 197, 217, 0.14);
+  --line-soft:  rgba(186, 197, 217, 0.07);
+
+  /* Text */
+  /* Text — all pass 4.5:1 against --ground (#1A1E20) */
+  --text:       #D7DEEA;   /* 12.1:1 */
+  --text-dim:   #A3AFC2;   /* 7.7:1  */
+  --text-faint: #8B97A9;   /* 5.4:1  */
+
+  /* Type */
+  --display: "Archivo", "Helvetica Neue", Arial, sans-serif;
+  --body:    "IBM Plex Sans", -apple-system, BlinkMacSystemFont, Segoe UI, sans-serif;
+  --mono:    "IBM Plex Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
+
+  /* Rhythm */
+  --gut:     clamp(1.25rem, 4vw, 2rem);
+  --section: clamp(4.5rem, 11vw, 8rem);
+  --max:     1180px;
+  --radius:  4px;
+  --nav-h:   62px;
+
+  --ease: cubic-bezier(0.22, 1, 0.36, 1);
 }
 
-* {
-    font-family: "Open Sans", Arial, sans-serif;
-}
-#main {
-    margin-left: 100px;
-    background-color: transparent;
-}
-
-h1, h2, h3, h4, h5, h6 {
-    text-align: center;
-    font-weight: 600;
+/* ---------- Reset ---------- */
+*, *::before, *::after { box-sizing: border-box; }
+html {
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+  /* Sticky nav must not cover an anchor target or a focused control (WCAG 2.2 AA) */
+  scroll-padding-top: calc(var(--nav-h) + 1.5rem);
 }
 
-.title{
-    border-bottom: solid 2px wheat;
+body {
+  margin: 0;
+  background: var(--ground);
+  color: var(--text);
+  font-family: var(--body);
+  font-size: 1.0625rem;   /* 17px base — Hebrew and Latin both read better here */
+  line-height: 1.7;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
-section {
-    padding: 3vh;
+img { max-width: 100%; display: block; }
+a { color: inherit; text-decoration: none; }
+ul, ol { margin: 0; padding: 0; list-style: none; }
+p { margin: 0; }
+
+:focus-visible {
+  outline: 2px solid var(--lime);
+  outline-offset: 3px;
+  border-radius: 2px;
 }
 
-footer {
-    padding: 20px;
-    border-top: 1px solid rgba(255,255,255,0.1);
-    margin-top: 40px;
+.skip-link {
+  position: absolute;
+  inset-inline-start: -9999px;
+  top: 0;
+  background: var(--lime);
+  color: var(--slate);
+  padding: 0.75rem 1.25rem;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  z-index: 200;
+}
+.skip-link:focus { inset-inline-start: 0; }
+
+/* ---------- Type primitives ---------- */
+h1, h2, h3, h4 {
+  font-family: var(--display);
+  font-weight: 700;
+  line-height: 1.04;
+  letter-spacing: -0.028em;
+  margin: 0;
+  color: #EAF0F8;
+  text-wrap: balance;
 }
 
-
-#hero {
-    padding: 2em;
-    width: 100%;
-    /* background-color: snow; */
-    background: url("bg_img.jpg") bottom center no-repeat;
-    background-size: cover;
-    color: white;
+.eyebrow {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lime);
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.eyebrow::before {
+  content: "";
+  width: 1.75rem;
+  height: 1px;
+  background: var(--moss);
+  flex: none;
 }
 
-#about {
-    /* background-color: #261F1A; */
-    color: wheat;
-
-}
-  
-.font-big {
-    font-size: 1.25em;
-}
-.social-logo {
-    margin: 5px;
-    font-size:42px
+.lede {
+  font-size: clamp(1.1875rem, 1.9vw, 1.375rem);
+  color: var(--text-dim);
+  max-width: 60ch;
+  line-height: 1.7;
 }
 
-.desert-bg a {
-    background-color: #7ba1a691;
-    color: wheat;
-}
-.desert-color-1 {
-    background-color: #dc6a50;
-}
-
-.desert-color-2 {
-    background-color: #F0954F;
+/* ---------- Layout ---------- */
+.wrap {
+  width: 100%;
+  max-width: var(--max);
+  margin-inline: auto;
+  padding-inline: var(--gut);
 }
 
-.desert-color-3 {
-    background-color: #F0B04F;
+.band { padding-block: var(--section); position: relative; }
+.band + .band { border-top: 1px solid var(--line-soft); }
+
+.band-head { margin-bottom: clamp(2.5rem, 5vw, 3.75rem); }
+.band-head .eyebrow { margin-bottom: 1.25rem; }
+.band-head h2 {
+  font-size: clamp(1.875rem, 4.4vw, 3rem);
+  max-width: 20ch;
+}
+.band-head .lede { margin-top: 1.125rem; }
+
+/* ---------- Buttons ---------- */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.625rem;
+  font-family: var(--mono);
+  font-size: 0.9375rem;
+  font-weight: 500;
+  letter-spacing: 0.02em;
+  padding: 0.8125rem 1.375rem;
+  border-radius: var(--radius);
+  border: 1px solid transparent;
+  cursor: pointer;
+  transition: background 0.2s var(--ease), border-color 0.2s var(--ease),
+              color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.btn svg { width: 1em; height: 1em; flex: none; }
+
+.btn-primary {
+  background: var(--lime);
+  color: #1A1E20;
+  font-weight: 600;
+}
+.btn-primary:hover { background: #B9D163; transform: translateY(-2px); }
+
+.btn-ghost {
+  border-color: var(--line);
+  color: var(--text);
+  background: transparent;
+}
+.btn-ghost:hover { border-color: var(--mist); background: rgba(186, 197, 217, 0.05); }
+
+/* ============================================================
+   Nav
+   ============================================================ */
+.nav {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: rgba(26, 30, 32, 0.82);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border-bottom: 1px solid var(--line-soft);
+}
+.nav-inner {
+  display: flex;
+  align-items: center;
+  gap: 2rem;
+  height: var(--nav-h);
+}
+.nav-mark {
+  font-family: var(--display);
+  font-weight: 700;
+  font-size: 1.0625rem;
+  letter-spacing: -0.02em;
+  display: flex;
+  align-items: center;
+  gap: 0.55rem;
+  margin-inline-end: auto;
+}
+.nav-mark i {
+  width: 8px; height: 8px;
+  border-radius: 50%;
+  background: var(--lime);
+  box-shadow: 0 0 0 3px rgba(167, 191, 80, 0.16);
+  flex: none;
+}
+.nav-links { display: flex; gap: 0.5rem; }
+.nav-links a {
+  font-family: var(--mono);
+  font-size: 0.875rem;
+  color: var(--text-dim);
+  transition: color 0.18s var(--ease);
+  /* keeps the hit area at/above the 24x24 CSS px minimum */
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding-inline: 0.75rem;
+}
+.nav-links a:hover { color: var(--lime); }
+.nav .btn { padding: 0.5rem 1rem; font-size: 0.8125rem; }
+
+/* ---- Language switch ---- */
+.langswitch {
+  display: flex;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  overflow: hidden;
+  flex: none;
+}
+.langswitch a {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  line-height: 1;
+  color: var(--text-dim);
+  display: inline-flex;
+  align-items: center;
+  min-height: 30px;
+  padding-inline: 0.625rem;
+  transition: background 0.18s var(--ease), color 0.18s var(--ease);
+}
+.langswitch a + a { border-inline-start: 1px solid var(--line); }
+.langswitch a:hover { color: var(--text); background: rgba(186, 197, 217, 0.06); }
+.langswitch a[aria-current="page"] {
+  background: var(--moss);
+  color: #EAF0F8;
 }
 
-.desert-color-4 {
-    background-color: #F0794F;
-}
-.bg-mocha {
-    background-color: var(--mocha);
-}
-
-.card:hover {
-    transform: translateY(-8px);
-    transition: transform 0.2s;
+@media (max-width: 800px) { .nav-links { display: none; } }
+@media (max-width: 460px) {
+  .nav-inner { gap: 0.75rem; }
+  .nav-mark span { display: none; }
 }
 
-.skill-badge {
-    margin: 8px;
-    padding: 1em;
+/* ============================================================
+   Hero
+   ============================================================ */
+.hero {
+  position: relative;
+  padding-block: clamp(3.5rem, 9vw, 6.5rem) clamp(3rem, 7vw, 5rem);
+  overflow: hidden;
+}
+/* Photograph, tinted toward the brand palette and faded out downward.
+   NOTE: if you change `opacity` or `grayscale` below, re-check the hero text
+   contrast — the overrides in ".hero text over the photograph" are calibrated
+   to these exact values. */
+.hero-photo {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image: image-set(url("hero-bg.webp") type("image/webp"),
+                              url("hero-bg.jpg")  type("image/jpeg"));
+  background-size: cover;
+  background-position: center 42%;
+  background-repeat: no-repeat;
+  filter: grayscale(0.3) contrast(1.06) brightness(0.55);
+  opacity: 0.6;
+  mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,0.6) 58%, transparent 94%);
+  -webkit-mask-image: linear-gradient(180deg, #000 0%, rgba(0,0,0,0.6) 58%, transparent 94%);
+  pointer-events: none;
+}
+/* Mirrored in Hebrew so the open sky stays behind the headline. */
+[dir="rtl"] .hero-photo { transform: scaleX(-1); }
+
+.hero-photo::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(150deg, var(--signal), var(--moss) 70%);
+  mix-blend-mode: color;
 }
 
-.typed-out{
-    overflow: hidden;
-    border-right: .15em solid rgb(154, 111, 11);
-    white-space: nowrap;
-    animation: 
-      typing 1.6s steps(86, end) forwards,
-      blink 1s infinite;
-    font-size: 1.6rem;
-    color: #ffffff;
+.hero::before {
+  /* engineering grid, fades out downward */
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+  background-image:
+    linear-gradient(var(--line-soft) 1px, transparent 1px),
+    linear-gradient(90deg, var(--line-soft) 1px, transparent 1px);
+  background-size: 68px 68px;
+  mask-image: linear-gradient(180deg, rgba(0,0,0,0.85), transparent 78%);
+  -webkit-mask-image: linear-gradient(180deg, rgba(0,0,0,0.85), transparent 78%);
+  pointer-events: none;
+}
+.hero::after {
+  content: "";
+  position: absolute;
+  top: -20%;
+  inset-inline-end: -10%;
+  width: 46rem;
+  height: 46rem;
+  /* kept low — the photograph now carries the hero's atmosphere */
+  background: radial-gradient(circle, rgba(28, 102, 166, 0.10), transparent 62%);
+  pointer-events: none;
+}
+.hero .wrap { position: relative; z-index: 1; }
 
+/* ---- .hero text over the photograph ----
+   Body-weight text sits on the brightest part of the image, so the hero
+   overrides the page tokens with lighter values. Measured against the
+   brightest 0.5% of pixels at each element's vertical position, at the
+   photo's current opacity/grayscale: eyebrow 5.3:1, h1 7.8:1, lede 6.4:1,
+   rail caption 7.0:1, node notes 5.0:1 — all clear of the 4.5:1 minimum. */
+.hero .eyebrow      { color: #C2D96B; }
+.hero .lede         { color: #D7DEEA; }
+.hero .rail-caption { color: #C3CDDC; }
+
+.hero h1 {
+  font-size: clamp(2.5rem, 7.4vw, 5.25rem);
+  max-width: 15ch;
+  margin: 1.5rem 0 0;
 }
-@keyframes typing {
-    from { width: 0 }
-    to { width: 100% }
+.hero h1 em {
+  font-style: normal;
+  color: var(--lime);
 }
-@keyframes blink {
-    from { border-color: transparent }
-    to { border-color: rgb(154, 111, 11); }
+.hero .lede { margin-top: 1.75rem; font-size: clamp(1.0625rem, 1.7vw, 1.25rem); }
+
+.hero-actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.875rem;
+  margin-top: 2.25rem;
+}
+
+/* ---------- Signature: the pipeline rail ---------- */
+.rail {
+  position: relative;
+  margin-top: clamp(3.5rem, 8vw, 5.5rem);
+}
+.rail-caption {
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.18em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 1.75rem;
+  display: flex;
+  align-items: center;
+  gap: 0.6rem;
+}
+.rail-caption::after {
+  content: "";
+  height: 1px;
+  flex: 1;
+  background: var(--line-soft);
+}
+
+/* Positioning context for the track, so the line always lands on the dots
+   regardless of how tall the caption above it wraps. */
+.rail-body { position: relative; }
+
+.rail-track {
+  position: absolute;
+  inset-inline: 0;
+  top: 4px;
+  height: 1px;
+  background: var(--line);
+  overflow: hidden;
+}
+.rail-pulse {
+  position: absolute;
+  top: 0;
+  inset-inline-start: 0;
+  width: 22%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, var(--lime), transparent);
+  animation: railRun 4.2s var(--ease) infinite;
+}
+/* The pulse follows reading direction, so it runs right-to-left in Hebrew. */
+[dir="rtl"] .rail-pulse { animation-name: railRunRtl; }
+
+@keyframes railRun {
+  0%   { transform: translateX(-120%); }
+  70%  { transform: translateX(560%); }
+  100% { transform: translateX(560%); }
+}
+@keyframes railRunRtl {
+  0%   { transform: translateX(120%); }
+  70%  { transform: translateX(-560%); }
+  100% { transform: translateX(-560%); }
+}
+
+.rail-nodes {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1.5rem;
+  position: relative;
+}
+.rail-nodes li { padding-top: 1.75rem; position: relative; }
+.rail-nodes li::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  inset-inline-start: 0;
+  width: 9px; height: 9px;
+  border-radius: 50%;
+  background: var(--ground);
+  border: 1px solid var(--lime);
+}
+.rail-nodes li:first-child::before { background: var(--lime); }
+
+.node-name {
+  font-family: var(--mono);
+  font-size: 0.875rem;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--mist);
+  display: block;
+  margin-bottom: 0.375rem;
+}
+.node-note {
+  font-size: 0.9375rem;
+  color: var(--text-faint);
+  line-height: 1.55;
+  display: block;
+}
+
+@media (max-width: 720px) {
+  .rail-track {
+    inset-inline: 4px auto;
+    top: 0; bottom: 0;
+    width: 1px; height: auto;
+  }
+  /* Stacked on mobile the pulse falls downward in both directions. */
+  .rail-pulse,
+  [dir="rtl"] .rail-pulse { width: 100%; height: 22%; animation-name: railRunV; }
+  @keyframes railRunV {
+    0%   { transform: translateY(-120%); }
+    70%  { transform: translateY(560%); }
+    100% { transform: translateY(560%); }
+  }
+  .rail-nodes { grid-template-columns: 1fr; gap: 1.75rem; }
+  .rail-nodes li { padding-top: 0; padding-inline-start: 1.75rem; }
+  .rail-nodes li::before { top: 6px; }
+}
+
+/* ============================================================
+   Signals strip
+   ============================================================ */
+.signals {
+  border-block: 1px solid var(--line-soft);
+  background: rgba(44, 50, 54, 0.35);
+}
+.signals ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 2.5rem;
+  padding-block: 1.25rem;
+  font-family: var(--mono);
+  font-size: 0.9375rem;
+  color: var(--text-dim);
+}
+.signals li { display: flex; align-items: center; gap: 0.625rem; }
+.signals li svg { width: 15px; height: 15px; color: var(--lime); flex: none; }
+/* A claim that links to its own public verification record. */
+.signal-link {
+  color: inherit;
+  text-decoration: underline;
+  text-decoration-color: var(--moss);
+  text-underline-offset: 3px;
+  transition: color 0.18s var(--ease), text-decoration-color 0.18s var(--ease);
+}
+.signal-link:hover { color: var(--lime); text-decoration-color: var(--lime); }
+
+/* ============================================================
+   Services
+   ============================================================ */
+.tablist {
+  display: flex;
+  gap: 0.25rem;
+  overflow-x: auto;
+  scrollbar-width: none;
+  border-bottom: 1px solid var(--line);
+  margin-bottom: clamp(2rem, 4vw, 2.75rem);
+}
+.tablist::-webkit-scrollbar { display: none; }
+
+.tab {
+  flex: none;
+  appearance: none;
+  background: none;
+  border: 0;
+  border-bottom: 2px solid transparent;
+  margin-bottom: -1px;
+  padding: 0.75rem 1rem;
+  font-family: var(--mono);
+  font-size: 0.875rem;
+  letter-spacing: 0.02em;
+  color: var(--text-faint);
+  cursor: pointer;
+  white-space: nowrap;
+  transition: color 0.2s var(--ease), border-color 0.2s var(--ease);
+}
+.tab:hover { color: var(--text); }
+.tab[aria-selected="true"] {
+  color: var(--lime);
+  border-bottom-color: var(--lime);
+}
+
+.panel[hidden] { display: none; }
+.panel {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: clamp(1.75rem, 5vw, 4rem);
+  align-items: start;
+  animation: panelIn 0.35s var(--ease) both;
+}
+@keyframes panelIn {
+  from { opacity: 0; transform: translateY(8px); }
+  to   { opacity: 1; transform: none; }
+}
+
+.panel-icon {
+  width: 36px; height: 36px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  color: var(--lime);
+  margin-bottom: 1.25rem;
+}
+.panel-icon svg { width: 18px; height: 18px; }
+
+.panel h3 {
+  font-size: clamp(1.375rem, 2.6vw, 1.75rem);
+  margin-bottom: 0.75rem;
+}
+.panel-lede { color: var(--text-dim); max-width: 42ch; }
+
+.panel-list li {
+  display: flex;
+  gap: 0.75rem;
+  padding-block: 0.75rem;
+  border-bottom: 1px solid var(--line-soft);
+  font-size: 1rem;
+  color: var(--text);
+  line-height: 1.55;
+}
+.panel-list li:first-child { padding-top: 0; }
+.panel-list li::before {
+  content: "";
+  flex: none;
+  width: 6px; height: 6px;
+  margin-top: 0.55rem;
+  border-radius: 50%;
+  background: var(--moss);
+  box-shadow: 0 0 0 3px rgba(70, 89, 2, 0.28);
+}
+
+@media (max-width: 720px) {
+  .panel { grid-template-columns: 1fr; gap: 1.75rem; }
+}
+
+/* Narrow screens: the six tabs would scroll horizontally inside a scrollbar we
+   hide, so two of the services became undiscoverable. Wrap them into chips
+   instead — every service stays visible without a swipe. */
+@media (max-width: 640px) {
+  .tablist {
+    flex-wrap: wrap;
+    gap: 0.4rem;
+    overflow-x: visible;
+    border-bottom: 0;
+  }
+  .tab {
+    margin-bottom: 0;
+    border: 1px solid var(--line);
+    border-radius: var(--radius);
+    padding: 0.5rem 0.75rem;
+  }
+  .tab[aria-selected="true"] {
+    border-color: var(--lime);
+    background: rgba(167, 191, 80, 0.12);
+  }
+}
+
+/* ============================================================
+   Before / after  (replaces a portfolio)
+   ============================================================ */
+.swap { border-top: 1px solid var(--line-soft); }
+.swap-row {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  align-items: center;
+  padding-block: 1.625rem;
+  border-bottom: 1px solid var(--line-soft);
+}
+.swap-before, .swap-after { font-size: 1rem; line-height: 1.65; }
+.swap-before { color: var(--text-dim); }
+.swap-after  { color: var(--text); }
+.swap-after strong { color: var(--lime); font-weight: 500; }
+
+.swap-arrow {
+  color: var(--signal);
+  display: grid;
+  place-items: center;
+}
+.swap-arrow svg { width: 20px; height: 20px; }
+/* Arrows follow reading direction. */
+[dir="rtl"] .swap-arrow svg,
+[dir="rtl"] .btn svg { transform: scaleX(-1); }
+
+.swap-legend {
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  gap: clamp(1rem, 3vw, 2.5rem);
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  padding-bottom: 0.875rem;
+}
+.swap-legend span:nth-child(2) { width: 20px; }
+
+@media (max-width: 700px) {
+  .swap-legend { display: none; }
+  .swap-row { grid-template-columns: 1fr; gap: 0.75rem; }
+  .swap-arrow { justify-self: start; transform: rotate(90deg); margin-inline-start: 0.25rem; }
+  /* Stacked: the container rotates, so the glyph itself must not also flip. */
+  [dir="rtl"] .swap-arrow svg { transform: none; }
+}
+
+/* ============================================================
+   How I work
+   ============================================================ */
+.steps {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(230px, 1fr));
+  gap: clamp(1.75rem, 3.5vw, 2.75rem);
+  counter-reset: step;
+}
+.step { position: relative; padding-top: 1.75rem; border-top: 1px solid var(--line); }
+.step::before {
+  counter-increment: step;
+  content: counter(step, decimal-leading-zero);
+  position: absolute;
+  top: -0.75rem;
+  inset-inline-start: 0;
+  background: var(--ground);
+  padding-inline-end: 0.625rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  color: var(--lime);
+}
+.step h3 { font-size: 1.1875rem; margin-bottom: 0.5rem; }
+.step p { font-size: 1rem; color: var(--text-dim); }
+.step-time {
+  display: block;
+  margin-top: 0.75rem;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+}
+
+/* ============================================================
+   About
+   ============================================================ */
+.about-grid {
+  display: grid;
+  grid-template-columns: 240px 1fr;
+  gap: clamp(2rem, 5vw, 4rem);
+  align-items: start;
+}
+.about-photo {
+  /* Reserves the box before the image loads, so the section does not jump (CLS). */
+  aspect-ratio: 1067 / 1600;
+  height: auto;
+  border-radius: var(--radius);
+  border: 1px solid var(--line);
+  filter: grayscale(1) contrast(1.05);
+  transition: filter 0.4s var(--ease);
+  width: 100%;
+}
+.about-photo:hover { filter: grayscale(0) contrast(1); }
+
+.about-body p + p { margin-top: 1.125rem; }
+.about-body p { color: var(--text-dim); max-width: 62ch; }
+.about-body strong { color: var(--text); font-weight: 500; }
+
+.note {
+  margin-top: 2rem;
+  border-inline-start: 2px solid var(--moss);
+  padding-block: 0.25rem;
+  padding-inline: 1.25rem 0;
+  font-size: 1rem;
+  color: var(--text-dim);
+  max-width: 62ch;
+}
+.note b {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--lime);
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+}
+
+@media (max-width: 720px) {
+  .about-grid { grid-template-columns: 1fr; }
+  .about-photo { max-width: 200px; }
+}
+
+/* ============================================================
+   Stack
+   ============================================================ */
+.stack-group + .stack-group { margin-top: 1.75rem; }
+.stack-label {
+  font-family: var(--mono);
+  font-size: 0.6875rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.75rem;
+}
+.stack-items { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.stack-items span {
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  color: var(--mist);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  padding: 0.3125rem 0.75rem;
+  transition: border-color 0.2s var(--ease), color 0.2s var(--ease);
+}
+.stack-items span:hover { border-color: var(--lime); color: var(--lime); }
+
+/* ============================================================
+   FAQ — plain <h3>/<p> so the answers stay extractable by
+   search and answer engines. No accordion, nothing hidden.
+   ============================================================ */
+.faq { display: grid; gap: 0; }
+.faq-item {
+  padding-block: clamp(1.25rem, 2.5vw, 1.75rem);
+  border-top: 1px solid var(--line-soft);
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 1.35fr);
+  gap: clamp(0.75rem, 3vw, 2.5rem);
+  align-items: start;
+}
+.faq-item:last-child { border-bottom: 1px solid var(--line-soft); }
+.faq-q {
+  font-family: var(--display);
+  font-size: 1.0625rem;
+  font-weight: 600;
+  line-height: 1.35;
+  color: #EAF0F8;
+  margin: 0;
+  text-wrap: balance;
+}
+.faq-a { font-size: 0.9375rem; color: var(--text-dim); margin: 0; }
+
+@media (max-width: 720px) {
+  .faq-item { grid-template-columns: 1fr; gap: 0.625rem; }
+}
+
+/* ============================================================
+   Contact
+   ============================================================ */
+.contact { background: var(--surface); border-top: 1px solid var(--line-soft); }
+.contact .band-head h2 { font-size: clamp(2rem, 5vw, 3.5rem); }
+
+.channels {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+  gap: 1rem;
+  margin-top: 2.5rem;
+}
+.channel {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 1.25rem 1.375rem;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: var(--ground);
+  transition: border-color 0.2s var(--ease), transform 0.2s var(--ease);
+}
+.channel:hover { border-color: var(--lime); transform: translateY(-3px); }
+.channel-icon {
+  width: 38px; height: 38px;
+  flex: none;
+  display: grid;
+  place-items: center;
+  border-radius: var(--radius);
+  background: rgba(70, 89, 2, 0.35);
+  color: var(--lime);
+}
+.channel-icon svg { width: 18px; height: 18px; }
+.channel-label {
+  display: block;
+  font-family: var(--mono);
+  font-size: 0.75rem;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--text-faint);
+  margin-bottom: 0.1875rem;
+}
+.channel-value { font-size: 1rem; color: var(--text); word-break: break-word; }
+
+.contact-foot {
+  margin-top: 2.25rem;
+  font-family: var(--mono);
+  font-size: 0.875rem;
+  color: var(--text-faint);
+}
+
+/* ============================================================
+   Footer
+   ============================================================ */
+.foot {
+  border-top: 1px solid var(--line-soft);
+  padding-block: 2rem;
+}
+.foot-inner {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1rem;
+  align-items: center;
+  justify-content: space-between;
+  font-family: var(--mono);
+  font-size: 0.8125rem;
+  color: var(--text-faint);
+}
+.foot-links { display: flex; gap: 0.25rem; }
+.foot-links a {
+  transition: color 0.18s var(--ease);
+  display: inline-flex;
+  align-items: center;
+  min-height: 32px;
+  padding-inline: 0.625rem;
+}
+.foot-links a:hover { color: var(--lime); }
+
+/* ============================================================
+   Hebrew / RTL typography
+   Latin technical terms (Python, API, ETL) keep IBM Plex Mono via
+   per-glyph fallback; Hebrew picks up Heebo / Assistant.
+   ============================================================ */
+[lang="he"] {
+  --display: "Heebo", "Rubik", "Noto Sans Hebrew", "Segoe UI", sans-serif;
+  --body:    "Assistant", "Heebo", "Noto Sans Hebrew", "Segoe UI", sans-serif;
+  /* Latin technical terms keep Plex Mono; Hebrew falls through to Heebo. */
+  --mono:    "IBM Plex Mono", "Heebo", "Noto Sans Hebrew", monospace;
+}
+
+/* Hebrew letterforms are boxy: no capitals, no ascenders or descenders.
+   Letter-spacing is actively harmful — it breaks the visual word unit — so
+   every tracked element on the page resets to normal. Word-spacing does the
+   separating work instead. */
+[lang="he"] {
+  letter-spacing: normal;
+  word-spacing: 0.05em;
+  line-height: 1.75;
+}
+
+[lang="he"] h1,
+[lang="he"] h2,
+[lang="he"] h3,
+[lang="he"] h4 {
+  letter-spacing: normal;
+  line-height: 1.3;
+}
+
+[lang="he"] .eyebrow,
+[lang="he"] .rail-caption,
+[lang="he"] .node-name,
+[lang="he"] .stack-label,
+[lang="he"] .step-time,
+[lang="he"] .channel-label,
+[lang="he"] .swap-legend,
+[lang="he"] .btn,
+[lang="he"] .nav-links a,
+[lang="he"] .tab {
+  letter-spacing: normal;
+  text-transform: none;
+}
+
+/* Hebrew renders visually lighter than Latin on a dark background;
+   a half-step of weight restores the intended density. */
+[lang="he"] body,
+[lang="he"] .lede,
+[lang="he"] .panel-list li,
+[lang="he"] .about-body p,
+[lang="he"] .swap-before,
+[lang="he"] .swap-after { font-weight: 500; }
+
+[lang="he"] .lede,
+[lang="he"] .panel-list li,
+[lang="he"] .about-body p,
+[lang="he"] .faq-a { line-height: 1.8; }
+
+/* Latin runs inside Hebrew sentences stay left-to-right. */
+[lang="he"] .stack-items span,
+[lang="he"] .channel-value,
+[lang="he"] .signals li { unicode-bidi: isolate; }
+
+/* ============================================================
+   Motion
+   ============================================================ */
+/* Content is visible by default and only hidden once JS has confirmed it can
+   reveal it again. Without this, a blocked or failed script leaves the whole
+   page below the hero — services, proof, and every contact link — invisible. */
+.js .reveal {
+  opacity: 0;
+  transform: translateY(18px);
+  transition: opacity 0.6s var(--ease), transform 0.6s var(--ease);
+}
+.js .reveal.is-in { opacity: 1; transform: none; }
+
+/* Same reasoning for the tabs: with no JS the tab buttons cannot switch
+   panels, so drop the tablist and show every service instead. */
+html:not(.js) .tablist { display: none; }
+html:not(.js) .panel[hidden] { display: grid; }
+html:not(.js) .panel + .panel { margin-top: clamp(2rem, 4vw, 3rem); }
+
+.hero .eyebrow, .hero h1, .hero .lede, .hero-actions, .hero .rail {
+  animation: riseIn 0.75s var(--ease) both;
+}
+.hero h1        { animation-delay: 0.06s; }
+.hero .lede     { animation-delay: 0.12s; }
+.hero-actions   { animation-delay: 0.18s; }
+.hero .rail     { animation-delay: 0.26s; }
+
+@keyframes riseIn {
+  from { opacity: 0; transform: translateY(16px); }
+  to   { opacity: 1; transform: none; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+  }
+  .reveal { opacity: 1; transform: none; }
+  .rail-pulse { display: none; }
 }

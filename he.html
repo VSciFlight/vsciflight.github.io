@@ -1,0 +1,762 @@
+<!DOCTYPE html>
+<html lang="he" dir="rtl">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>פיתוח אוטומציות לעסקים | מפתח אוטומציות פרילנסר בישראל</title>
+<meta name="description" content="פיתוח אוטומציות לעסקים בישראל. אוטומציה של תהליכים, פייפליינים של נתונים, ממשקי API, סקרייפינג ובוטים לטלגרם ב-Python. שיחה ראשונה בחינם.">
+
+<meta property="og:title" content="פיתוח אוטומציות לעסקים | מפתח אוטומציות פרילנסר בישראל">
+<meta property="og:site_name" content="אלון בלקר">
+<meta property="og:locale:alternate" content="en_US">
+<meta property="og:image:alt" content="אלון בלקר, מפתח אוטומציות פרילנסר">
+<meta name="twitter:card" content="summary_large_image">
+<meta property="og:description" content="תהליך ידני נכנס, תהליך אוטומטי יוצא. אוטומציות, ממשקי API, צנרות נתונים, סקרייפינג ובוטים לעסקים צומחים.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="https://vsciflight.github.io/he.html">
+<meta property="og:image" content="https://vsciflight.github.io/src/prof_img.jpg">
+<meta property="og:locale" content="he_IL">
+<meta name="theme-color" content="#1A1E20">
+<link rel="canonical" href="https://vsciflight.github.io/he.html">
+<link rel="alternate" hreflang="en" href="https://vsciflight.github.io/">
+<link rel="alternate" hreflang="he" href="https://vsciflight.github.io/he.html">
+<link rel="alternate" hreflang="x-default" href="https://vsciflight.github.io/">
+
+<link rel="preload" as="image" href="src/hero-bg.webp" type="image/webp">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Assistant:wght@400;500&family=Heebo:wght@500;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="src/main.css">
+
+<!-- Remembers an explicit language choice and honours it on the next visit. -->
+<script>
+document.documentElement.classList.add('js');
+(function () {
+  try {
+    var want = localStorage.getItem('lang');
+    if (want === 'en') location.replace('./' + location.hash);
+  } catch (e) {}
+})();
+</script>
+
+<!-- =========================================================
+     FILL THESE IN — search this file for  XXXXXXXXX
+       1. WhatsApp link   → wa.me/972XXXXXXXXX
+       2. Phone link      → tel:+972XXXXXXXXX
+       3. Phone displayed → +972 XX-XXX-XXXX
+     ========================================================= -->
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@graph": [
+    {
+      "@type": "WebSite",
+      "@id": "https://vsciflight.github.io/#website",
+      "url": "https://vsciflight.github.io/",
+      "name": "אלון בלקר — פיתוח אוטומציות",
+      "inLanguage": [
+        "he",
+        "en"
+      ],
+      "publisher": {
+        "@id": "https://vsciflight.github.io/#alon"
+      }
+    },
+    {
+      "@type": "Person",
+      "@id": "https://vsciflight.github.io/#alon",
+      "name": "אלון בלקר",
+      "alternateName": [
+        "Alon Belker",
+        "Alon Martin Belker"
+      ],
+      "url": "https://vsciflight.github.io/he.html",
+      "image": "https://vsciflight.github.io/src/prof_img.jpg",
+      "jobTitle": "מפתח אוטומציות פרילנסר",
+      "description": "מפתח אוטומציות פרילנסר. בונה אוטומציה של תהליכים עסקיים, פייפליינים של נתונים, ממשקי API, סקרייפרים ובוטים לטלגרם לעסקים בישראל.",
+      "email": "mailto:alonsyco@gmail.com",
+      "knowsLanguage": [
+        {
+          "@type": "Language",
+          "name": "Hebrew",
+          "alternateName": "he"
+        },
+        {
+          "@type": "Language",
+          "name": "English",
+          "alternateName": "en"
+        }
+      ],
+      "knowsAbout": [
+        "אוטומציה של תהליכים עסקיים",
+        "פייפליינים של נתונים ו-ETL",
+        "פיתוח ואינטגרציית API",
+        "סקרייפינג ואיסוף נתונים",
+        "פיתוח בוטים לטלגרם"
+      ],
+      "nationality": {
+        "@type": "Country",
+        "name": "Israel"
+      },
+      "workLocation": {
+        "@type": "Country",
+        "name": "Israel"
+      },
+      "sameAs": [
+        "https://www.github.com/VSciFlight",
+        "https://www.linkedin.com/in/alon-martin-belker"
+      ],
+      "worksFor": {
+        "@id": "https://vsciflight.github.io/#business"
+      },
+      "hasCredential": {
+        "@type": "EducationalOccupationalCredential",
+        "credentialCategory": "certification",
+        "name": "ISTQB Certified Tester",
+        "url": "https://scr.istqb.org/?name=&number=2014586",
+        "identifier": "2014586",
+        "recognizedBy": {
+          "@type": "Organization",
+          "name": "ISTQB",
+          "url": "https://www.istqb.org/"
+        }
+      }
+    },
+    {
+      "@type": "ProfessionalService",
+      "@id": "https://vsciflight.github.io/#business",
+      "name": "אלון בלקר — פיתוח אוטומציות",
+      "alternateName": "Alon Belker — Automation Development",
+      "url": "https://vsciflight.github.io/he.html",
+      "image": "https://vsciflight.github.io/src/prof_img.jpg",
+      "description": "פיתוח אוטומציות לעסקים: אוטומציה של תהליכים, פייפליינים של נתונים ו-ETL, פיתוח ואינטגרציית API, סקרייפינג, בוטים לטלגרם ופיתוח ב-Python. עבודה מרחוק ובשטח בישראל, בעברית ובאנגלית.",
+      "email": "mailto:alonsyco@gmail.com",
+      "founder": {
+        "@id": "https://vsciflight.github.io/#alon"
+      },
+      "employee": {
+        "@id": "https://vsciflight.github.io/#alon"
+      },
+      "address": {
+        "@type": "PostalAddress",
+        "addressCountry": "IL"
+      },
+      "areaServed": [
+        {
+          "@type": "Country",
+          "name": "Israel"
+        }
+      ],
+      "availableLanguage": [
+        "he",
+        "en"
+      ],
+      "currenciesAccepted": "ILS",
+      "sameAs": [
+        "https://www.github.com/VSciFlight",
+        "https://www.linkedin.com/in/alon-martin-belker"
+      ],
+      "hasOfferCatalog": {
+        "@type": "OfferCatalog",
+        "name": "שירותי אוטומציה",
+        "inLanguage": "he",
+        "itemListElement": [
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://vsciflight.github.io/he.html#svc-automation"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://vsciflight.github.io/he.html#svc-pipelines"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://vsciflight.github.io/he.html#svc-api"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://vsciflight.github.io/he.html#svc-scraping"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://vsciflight.github.io/he.html#svc-bots"
+            }
+          },
+          {
+            "@type": "Offer",
+            "itemOffered": {
+              "@id": "https://vsciflight.github.io/he.html#svc-python"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "@type": "Service",
+      "@id": "https://vsciflight.github.io/he.html#svc-automation",
+      "name": "אוטומציה של תהליכים עסקיים",
+      "serviceType": "אוטומציה של תהליכים עסקיים",
+      "inLanguage": "he",
+      "description": "מיפוי איך התהליך באמת עובד היום, והחלפת החלקים החוזרים במשימות מתוזמנות ובשלבי אישור מבוססי כללים, כך ששיקול הדעת נשאר אצל הצוות.",
+      "provider": {
+        "@id": "https://vsciflight.github.io/#business"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Israel"
+      },
+      "sameAs": "https://vsciflight.github.io/#svc-automation"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://vsciflight.github.io/he.html#svc-pipelines",
+      "name": "פייפליינים של נתונים ו-ETL",
+      "serviceType": "פיתוח פייפליינים של נתונים ו-ETL",
+      "inLanguage": "he",
+      "description": "שליפה, אימות, המרה וטעינה של נתונים בין בסיסי נתונים, גיליונות ומערכות SaaS לפי תזמון, כולל דוחות קבועים שנבנים בלילה ובדיקות תקינות שמדווחות על כשלים.",
+      "provider": {
+        "@id": "https://vsciflight.github.io/#business"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Israel"
+      },
+      "sameAs": "https://vsciflight.github.io/#svc-pipelines"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://vsciflight.github.io/he.html#svc-api",
+      "name": "פיתוח ואינטגרציית API",
+      "serviceType": "פיתוח API ואינטגרציה בין מערכות",
+      "inLanguage": "he",
+      "description": "ממשקי REST שנבנים מאפס כולל הרשאות ותיעוד, ואינטגרציות בין CRM, ERP, מערכות חיוב, אחסון וגיליונות, כולל טיפול ב-webhooks, ניסיונות חוזרים ותורים.",
+      "provider": {
+        "@id": "https://vsciflight.github.io/#business"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Israel"
+      },
+      "sameAs": "https://vsciflight.github.io/#svc-api"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://vsciflight.github.io/he.html#svc-scraping",
+      "name": "סקרייפינג ואיסוף נתונים מהאינטרנט",
+      "serviceType": "סקרייפינג ואיסוף נתונים",
+      "inLanguage": "he",
+      "description": "פייפליינים מתוזמנים לאיסוף מחירים, מוצרים, מתחרים, מאגרים ציבוריים או פורטלים פנימיים, בנויים לשרוד שינויי מבנה, הגבלות קצב והתחברות.",
+      "provider": {
+        "@id": "https://vsciflight.github.io/#business"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Israel"
+      },
+      "sameAs": "https://vsciflight.github.io/#svc-scraping"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://vsciflight.github.io/he.html#svc-bots",
+      "name": "בוטים לטלגרם ולצ'אט",
+      "serviceType": "פיתוח בוטים",
+      "inLanguage": "he",
+      "description": "כלים פנימיים בתוך אפליקציות הצ'אט שהצוות כבר משתמש בהן: התראות וסיכומים יומיים, אישורים בלחיצה אחת ובדיקות סטטוס לצוות בשטח, וטפסים שנכתבים ישירות למערכות.",
+      "provider": {
+        "@id": "https://vsciflight.github.io/#business"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Israel"
+      },
+      "sameAs": "https://vsciflight.github.io/#svc-bots"
+    },
+    {
+      "@type": "Service",
+      "@id": "https://vsciflight.github.io/he.html#svc-python",
+      "name": "פיתוח ב-Python",
+      "serviceType": "פיתוח תוכנה ב-Python",
+      "inLanguage": "he",
+      "description": "שירותים, כלי שורת פקודה ותוכנות עזר לבק-אופיס ב-Python, כולל קבלת אחריות על סקריפט שביר קיים והפיכתו לתחזוקתי, מכוסה בבדיקות, מותקן, מתוזמן ומנוטר.",
+      "provider": {
+        "@id": "https://vsciflight.github.io/#business"
+      },
+      "areaServed": {
+        "@type": "Country",
+        "name": "Israel"
+      },
+      "sameAs": "https://vsciflight.github.io/#svc-python"
+    },
+    {
+      "@type": "WebPage",
+      "@id": "https://vsciflight.github.io/he.html#webpage",
+      "url": "https://vsciflight.github.io/he.html",
+      "name": "מפתח אוטומציות פרילנסר בישראל — אלון בלקר",
+      "description": "מפתח אוטומציות פרילנסר בישראל. אוטומציות, פייפליינים של נתונים, ממשקי API, סקרייפינג ובוטים לטלגרם — ב",
+      "inLanguage": "he",
+      "isPartOf": {
+        "@id": "https://vsciflight.github.io/#website"
+      },
+      "about": {
+        "@id": "https://vsciflight.github.io/#business"
+      },
+      "mainEntity": {
+        "@id": "https://vsciflight.github.io/#business"
+      },
+      "primaryImageOfPage": "https://vsciflight.github.io/src/prof_img.jpg",
+      "translationOfWork": {
+        "@id": "https://vsciflight.github.io/#webpage"
+      }
+    }
+  ]
+}
+</script>
+
+</head>
+<body>
+
+<a class="skip-link" href="#main">דילוג לתוכן</a>
+
+<!-- ================= Nav ================= -->
+<header class="nav">
+  <div class="wrap nav-inner">
+    <a class="nav-mark" href="#top"><i></i> <span>אלון בלקר</span></a>
+    <nav class="nav-links" aria-label="ניווט">
+      <a href="#services">שירותים</a>
+      <a href="#results">מה משתנה</a>
+      <a href="#process">איך אני עובד</a>
+      <a href="#about">עליי</a>
+    </nav>
+    <div class="langswitch" data-langswitch>
+      <a href="./" hreflang="en" lang="en">EN</a>
+      <a href="he.html" aria-current="page" hreflang="he" lang="he">עב</a>
+    </div>
+    <a class="btn btn-primary" href="#contact">דברו איתי</a>
+  </div>
+</header>
+
+<main id="main">
+
+<!-- ================= Hero ================= -->
+<section class="hero" id="top">
+  <div class="hero-photo" aria-hidden="true"></div>
+  <div class="wrap">
+    <p class="eyebrow">פרילנסר לפיתוח אוטומציות</p>
+
+    <h1>התהליך שלכם צריך לרוץ <em>בלעדיכם.</em></h1>
+
+    <p class="lede">
+      העבודה שהצוות שלכם חוזר עליה כל יום — העתקת מידע מכאן לשם, הבדיקות, המעקב — הופכת לתהליך
+      שרץ לבד. מהר יותר, מדויק בכל פעם, ובלי שמישהו צריך לזכור להפעיל אותו.
+    </p>
+
+    <div class="hero-actions">
+      <a class="btn btn-primary" href="#contact">
+        בואו נדבר
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <a class="btn btn-ghost" href="#process">איך אני עובד</a>
+    </div>
+
+    <!-- Signature element: the shape every project I build has -->
+    <div class="rail">
+      <p class="rail-caption">לכל אוטומציה יש את אותם ארבעה חלקים</p>
+      <div class="rail-body">
+        <div class="rail-track" aria-hidden="true"><span class="rail-pulse"></span></div>
+      <ol class="rail-nodes">
+        <li>
+          <span class="node-name">טריגר</span>
+          <span class="node-note">תזמון קבוע, מייל נכנס, טופס או webhook.</span>
+        </li>
+        <li>
+          <span class="node-name">איסוף</span>
+          <span class="node-note">שליפת הנתונים מכל מקום שבו הם נמצאים.</span>
+        </li>
+        <li>
+          <span class="node-name">עיבוד</span>
+          <span class="node-note">ניקוי, בדיקה והחלת הכללים שלכם.</span>
+        </li>
+        <li>
+          <span class="node-name">כתיבה בחזרה</span>
+          <span class="node-note">כתיבה בחזרה למערכות. התראה רק כשצריך אדם.</span>
+        </li>
+      </ol>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Signals ================= -->
+<section class="signals">
+  <div class="wrap">
+    <ul>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        <a class="signal-link" href="https://scr.istqb.org/?name=&number=2014586" target="_blank" rel="noopener">בודק מוסמך ISTQB</a>
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        עברית ואנגלית
+      </li>
+      <li>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M20 6 9 17l-5-5"/></svg>
+        עבודה מרחוק או בשטח בישראל
+      </li>
+    </ul>
+  </div>
+</section>
+
+<!-- ================= Services (tabbed) ================= -->
+<section class="band" id="services">
+  <div class="wrap">
+    <div class="band-head reveal">
+      <p class="eyebrow">שירותים</p>
+      <h2>אילו שירותי אוטומציה אני בונה</h2>
+    </div>
+
+    <div class="reveal" data-tabs>
+      <div class="tablist" role="tablist" aria-label="שירותים">
+        <button class="tab" role="tab" id="tab-auto"    aria-controls="p-auto"    aria-selected="true"  tabindex="0">אוטומציה</button>
+        <button class="tab" role="tab" id="tab-data"    aria-controls="p-data"    aria-selected="false" tabindex="-1">פייפליינים</button>
+        <button class="tab" role="tab" id="tab-api"     aria-controls="p-api"     aria-selected="false" tabindex="-1">ממשקי API</button>
+        <button class="tab" role="tab" id="tab-scrape"  aria-controls="p-scrape"  aria-selected="false" tabindex="-1">איסוף נתונים</button>
+        <button class="tab" role="tab" id="tab-bots"    aria-controls="p-bots"    aria-selected="false" tabindex="-1">בוטים</button>
+        <button class="tab" role="tab" id="tab-python"  aria-controls="p-python"  aria-selected="false" tabindex="-1">Python</button>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-auto" aria-labelledby="tab-auto" tabindex="0">
+        <div>
+          <div class="panel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 20v-6M12 10V4M4 12h6M14 12h6"/><circle cx="12" cy="12" r="2"/></svg></div>
+          <h3>אוטומציה של תהליכים עסקיים</h3>
+          <p class="panel-lede">החלקים החוזרים בתהליך עוברים לאוטומציה. שיקול הדעת נשאר אצל הצוות שלכם.</p>
+        </div>
+        <ul class="panel-list">
+          <li>מיפוי איך התהליך באמת עובד היום, כולל החלקים שאף אחד לא כתב</li>
+          <li>משימות מתוזמנות שמחליפות את השגרה הידנית היומית והשבועית</li>
+          <li>שלבי אישור שמגיעים לאדם רק כשהכללים אומרים שצריך</li>
+        </ul>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-data" aria-labelledby="tab-data" tabindex="0" hidden>
+        <div>
+          <div class="panel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><ellipse cx="12" cy="6" rx="8" ry="3"/><path d="M4 6v6c0 1.7 3.6 3 8 3s8-1.3 8-3V6M4 12v6c0 1.7 3.6 3 8 3s8-1.3 8-3v-6"/></svg></div>
+          <h3>פייפליינים של נתונים ו-ETL</h3>
+          <p class="panel-lede">נתונים עוברים בין המערכות שלכם לפי תזמון, בלי שאף אחד מייצא כלום.</p>
+        </div>
+        <ul class="panel-list">
+          <li>שליפה, אימות, המרה וטעינה בין בסיסי נתונים, גיליונות ומערכות SaaS</li>
+          <li>דוחות קבועים שנבנים בלילה ומחכים לכם לפני תחילת היום</li>
+          <li>בדיקות תקינות שמודיעות לכם שתהליך נפל, במקום שתגלו בעצמכם</li>
+        </ul>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-api" aria-labelledby="tab-api" tabindex="0" hidden>
+        <div>
+          <div class="panel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M10 13a5 5 0 0 0 7.5.5l3-3a5 5 0 0 0-7-7l-1.7 1.7"/><path d="M14 11a5 5 0 0 0-7.5-.5l-3 3a5 5 0 0 0 7 7L12 19"/></svg></div>
+          <h3>פיתוח ואינטגרציית API</h3>
+          <p class="panel-lede">ממשקים חדשים, או החיבור בין כלים שמעולם לא תוכננו לדבר זה עם זה.</p>
+        </div>
+        <ul class="panel-list">
+          <li>ממשקי REST שנבנים מאפס, כולל הרשאות ותיעוד</li>
+          <li>אינטגרציות בין CRM, ERP, מערכות חיוב, אחסון וגיליונות</li>
+          <li>טיפול ב-webhooks, ניסיונות חוזרים ותורים כדי ששום דבר לא ייעלם בשקט</li>
+        </ul>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-scrape" aria-labelledby="tab-scrape" tabindex="0" hidden>
+        <div>
+          <div class="panel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="11" cy="11" r="7"/><path d="m20 20-3.5-3.5"/></svg></div>
+          <h3>סקרייפינג ואיסוף נתונים מהאינטרנט</h3>
+          <p class="panel-lede">צנרת איסוף לנתונים שאתם אוספים היום ביד.</p>
+        </div>
+        <ul class="panel-list">
+          <li>מחירים, מוצרים, מתחרים, מאגרים ציבוריים או הפורטלים שלכם</li>
+          <li>בנוי לשרוד שינויי מבנה באתר, הגבלות קצב והתחברות</li>
+          <li>ייצוא נקי לבסיס הנתונים, לגיליון או לדשבורד לפי תזמון</li>
+        </ul>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-bots" aria-labelledby="tab-bots" tabindex="0" hidden>
+        <div>
+          <div class="panel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M21 5 2 12l7 3 3 7 9-17Z"/><path d="m9 15 5-5"/></svg></div>
+          <h3>בוטים לטלגרם ולצ׳אט</h3>
+          <p class="panel-lede">כלים פנימיים שחיים במקום שבו הצוות כבר מדבר, במקום מאחורי עוד התחברות.</p>
+        </div>
+        <ul class="panel-list">
+          <li>התראות וסיכומים יומיים שנשלחים לקבוצה או לאדם הנכון</li>
+          <li>אישורים בלחיצה אחת ובדיקת סטטוס לצוות בשטח</li>
+          <li>טפסים ותהליכי קליטה שנכתבים ישירות למערכות שלכם</li>
+        </ul>
+      </div>
+
+      <div class="panel" role="tabpanel" id="p-python" aria-labelledby="tab-python" tabindex="0" hidden>
+        <div>
+          <div class="panel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="m8 17-5-5 5-5M16 7l5 5-5 5"/></svg></div>
+          <h3>פיתוח ב-Python</h3>
+          <p class="panel-lede">עבודת פיתוח כללית, כולל הצלה של מה שמישהו בנה לפניי.</p>
+        </div>
+        <ul class="panel-list">
+          <li>שירותים, כלי שורת פקודה ותוכנות עזר לבק-אופיס</li>
+          <li>קבלת אחריות על סקריפט שביר והפיכתו לתחזוקתי ומכוסה בבדיקות</li>
+          <li>העלאה לאוויר, תזמון וניטור כדי שזה ימשיך לרוץ</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Before / after ================= -->
+<section class="band" id="results">
+  <div class="wrap">
+    <div class="band-head reveal">
+      <p class="eyebrow">מה משתנה</p>
+      <h2>אילו תהליכים ידניים שווה להפוך לאוטומטיים</h2>
+    </div>
+
+    <div class="swap reveal">
+      <div class="swap-legend" aria-hidden="true">
+        <span>היום</span><span></span><span>אחרי</span>
+      </div>
+
+      <div class="swap-row">
+        <p class="swap-before">מישהו מקליד מחדש פרטי הזמנות מהמייל ל-ERP כל בוקר.</p>
+        <div class="swap-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <p class="swap-after">המיילים נקראים, מנותחים ונכתבים אוטומטית. <strong>רק חריגים מגיעים לאדם.</strong></p>
+      </div>
+
+      <div class="swap-row">
+        <p class="swap-before">הדוח של יום ראשון לוקח חצי יום של ייצוא והדבקה.</p>
+        <div class="swap-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <p class="swap-after">הוא נבנה בלילה <strong>ומחכה בתיבה ב-07:00.</strong></p>
+      </div>
+
+      <div class="swap-row">
+        <p class="swap-before">שתי מערכות מחזיקות את אותם נתוני לקוחות ולא מסכימות ביניהן.</p>
+        <div class="swap-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <p class="swap-after">תהליך סנכרון אחד, מקור אמת אחד, <strong>ורשימה יומית של כל הפערים שנוצרו.</strong></p>
+      </div>
+
+      <div class="swap-row">
+        <p class="swap-before">מחירי מתחרים נבדקים ידנית, כשמישהו נזכר.</p>
+        <div class="swap-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <p class="swap-after">סקרייפר בודק לפי תזמון <strong>ומתריע ברגע שמשהו זז.</strong></p>
+      </div>
+
+      <div class="swap-row">
+        <p class="swap-before">תהליך נפל ביום חמישי. גיליתם ביום ראשון.</p>
+        <div class="swap-arrow" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M13 6l6 6-6 6"/></svg></div>
+        <p class="swap-after">כל תהליך מדווח על עצמו. <strong>תקלה היא הודעה, לא גילוי.</strong></p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Process ================= -->
+<section class="band" id="process">
+  <div class="wrap">
+    <div class="band-head reveal">
+      <p class="eyebrow">איך אני עובד</p>
+      <h2>איך עובד פרויקט אוטומציה: ארבעה שלבים</h2>
+    </div>
+
+    <ol class="steps reveal">
+      <li class="step">
+        <h3>שיחה</h3>
+        <p>אתם מספרים לי על התהליך שכואב. אני אומר בכנות אם שווה בכלל להפוך אותו לאוטומטי.</p>
+        <span class="step-time">ללא עלות · 30 דקות</span>
+      </li>
+      <li class="step">
+        <h3>מיפוי והצעה</h3>
+        <p>אני כותב את התהליך, מסמן מה כדאי להפוך לאוטומטי, ושולח הצעה כתובה עם היקף, מחיר ולוח זמנים.</p>
+        <span class="step-time">כמה ימים</span>
+      </li>
+      <li class="step">
+        <h3>בנייה</h3>
+        <p>בסבבים קצרים עם משהו שרץ כבר בהתחלה, כדי שתתקנו כיוון בזמן שזה עוד זול.</p>
+        <span class="step-time">לפי מה שסוכם</span>
+      </li>
+      <li class="step">
+        <h3>מסירה</h3>
+        <p>עולה לאוויר, מנוטר ומתועד, עם הקוד ברפוזיטורי שלכם. זה רץ גם בלעדיי.</p>
+        <span class="step-time">כולל תקופת ליווי</span>
+      </li>
+    </ol>
+  </div>
+</section>
+
+<!-- ================= About ================= -->
+<section class="band" id="about">
+  <div class="wrap">
+    <div class="band-head reveal">
+      <p class="eyebrow">עליי</p>
+      <h2>אלון בלקר</h2>
+    </div>
+
+    <div class="about-grid reveal">
+      <img class="about-photo" src="src/prof_img.jpg" alt="אלון בלקר, מפתח אוטומציות פרילנסר מישראל" width="240" loading="lazy">
+
+      <div class="about-body">
+        <p>
+          <strong>אלון בלקר הוא מפתח אוטומציות פרילנסר מישראל.</strong>
+          הוא בונה אוטומציה של תהליכים עסקיים, פייפליינים של נתונים, ממשקי API,
+          סקרייפרים ובוטים לטלגרם ב-Python, ועובד מרחוק ובשטח מול לקוחות בישראל,
+          בעברית ובאנגלית.
+        </p>
+        <p>
+          אני עובד עם עסקים שגדלו מעבר לתהליכים הידניים שלהם, אבל לא צריכים צוות פיתוח
+          במשרה מלאה.
+        </p>
+        <p>
+          הרקע שלי משלב פיתוח ו-QA, ולכן חשוב לי לא פחות
+          <strong>מה קורה כשאוטומציה נופלת בשלוש לפנות בוקר</strong> מאשר איך היא עובדת
+        </p>
+
+        <div class="note">
+          <b>לגבי תיק עבודות</b>
+          כמעט כל מה שבניתי חי בתוך מערכות פרטיות של לקוחות, אז אין ממש מה לצלם. במקום
+          זה — תביאו לשיחה את התהליך הכי מבולגן שיש לכם, ואני אגיד לכם בדיוק איך הייתי
+          הופך אותו לאוטומטי. עם או בלי התקשרות.
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= Contact ================= -->
+<section class="band contact" id="contact">
+  <div class="wrap">
+    <div class="band-head reveal">
+      <p class="eyebrow">צרו קשר</p>
+      <h2>ספרו לי מה אתם עושים באופן ידני.</h2>
+      <p class="lede">
+        כמה משפטים מספיקים — מה מפעיל את התהליך, מי נוגע בו וכל כמה זמן. אחזור אליכם
+        עם תשובה אם שווה להפוך אותו לאוטומטי ומה זה דורש.
+      </p>
+    </div>
+
+    <div class="channels reveal">
+
+      <a class="channel" href="mailto:alonsyco@gmail.com?subject=%D7%A4%D7%A0%D7%99%D7%99%D7%94%20%D7%91%D7%A0%D7%95%D7%92%D7%A2%20%D7%9C%D7%A4%D7%A8%D7%95%D7%99%D7%99%D7%A7%D7%98%20%D7%90%D7%95%D7%98%D7%95%D7%9E%D7%A6%D7%99%D7%94">
+        <span class="channel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><rect x="2" y="4" width="20" height="16" rx="2"/><path d="m2 7 10 6 10-6"/></svg></span>
+        <span>
+          <span class="channel-label">אימייל</span>
+          <span class="channel-value">alonsyco@gmail.com</span>
+        </span>
+      </a>
+
+      <!-- REPLACE XXXXXXXXX — digits only, no + and no leading 0
+           e.g. 054-123-4567  →  https://wa.me/972541234567 -->
+      <a class="channel" href="https://wa.me/972XXXXXXXXX?text=%D7%94%D7%99%D7%99%20%D7%90%D7%9C%D7%95%D7%9F%2C%20%D7%A8%D7%A6%D7%99%D7%AA%D7%99%20%D7%9C%D7%93%D7%91%D7%A8%20%D7%A2%D7%9C%20%D7%90%D7%95%D7%98%D7%95%D7%9E%D7%A6%D7%99%D7%94%20%D7%9C%D7%AA%D7%94%D7%9C%D7%99%D7%9A." target="_blank" rel="noopener">
+        <span class="channel-icon"><svg viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M12.04 2A9.9 9.9 0 0 0 2.1 11.9a9.8 9.8 0 0 0 1.35 4.96L2 22l5.28-1.38a9.9 9.9 0 0 0 4.76 1.21h.01A9.9 9.9 0 0 0 22 11.94 9.9 9.9 0 0 0 12.04 2Zm5.8 14.06c-.24.68-1.4 1.3-1.94 1.35-.5.05-.98.23-3.3-.69-2.78-1.1-4.55-3.94-4.69-4.13-.13-.19-1.11-1.48-1.11-2.82 0-1.34.7-2 .95-2.27a1 1 0 0 1 .72-.34h.52c.17 0 .39-.06.6.46.24.58.81 2 .88 2.14.07.14.12.3.02.49-.1.19-.15.3-.29.47l-.44.5c-.14.14-.29.3-.13.59.17.29.74 1.22 1.59 1.97 1.09.97 2 1.28 2.29 1.42.29.15.46.12.63-.07.17-.2.72-.84.91-1.13.19-.29.39-.24.65-.14.26.09 1.67.79 1.96.93.29.15.48.22.55.34.07.12.07.68-.17 1.36Z"/></svg></span>
+        <span>
+          <span class="channel-label">וואטסאפ</span>
+          <span class="channel-value">שלחו לי הודעה</span>
+        </span>
+      </a>
+
+      <!-- REPLACE XXXXXXXXX in both the href and the visible number -->
+      <a class="channel" href="tel:+972XXXXXXXXX">
+        <span class="channel-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M22 16.9v3a2 2 0 0 1-2.2 2 19.8 19.8 0 0 1-8.6-3.1 19.5 19.5 0 0 1-6-6A19.8 19.8 0 0 1 2.1 4.2 2 2 0 0 1 4.1 2h3a2 2 0 0 1 2 1.7c.1 1 .4 1.9.7 2.8a2 2 0 0 1-.5 2.1L8.1 9.9a16 16 0 0 0 6 6l1.3-1.3a2 2 0 0 1 2.1-.4c.9.3 1.8.6 2.8.7a2 2 0 0 1 1.7 2Z"/></svg></span>
+        <span>
+          <span class="channel-label">טלפון</span>
+          <span class="channel-value"><bdi dir="ltr">+972 XX-XXX-XXXX</bdi></span>
+        </span>
+      </a>
+
+    </div>
+
+    <p class="contact-foot">בדרך כלל חוזר תוך יום עסקים · שעון ישראל</p>
+  </div>
+</section>
+
+</main>
+
+<!-- ================= Footer ================= -->
+<footer class="foot">
+  <div class="wrap foot-inner">
+    <span>© <span id="year">2026</span> אלון בלקר — פיתוח אוטומציות</span>
+    <nav class="foot-links" aria-label="קישורים">
+      <a href="https://www.linkedin.com/in/alon-martin-belker" target="_blank" rel="noopener">LinkedIn</a>
+      <a href="https://www.github.com/VSciFlight" target="_blank" rel="noopener">GitHub</a>
+      <a href="mailto:alonsyco@gmail.com">אימייל</a>
+    </nav>
+  </div>
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+
+  /* ---- Language switch: remember the choice, keep your place on the page ---- */
+  document.querySelectorAll('[data-langswitch] a').forEach(function (a) {
+    a.addEventListener('click', function (e) {
+      e.preventDefault();
+      try { localStorage.setItem('lang', a.getAttribute('hreflang')); } catch (err) {}
+      location.href = a.getAttribute('href') + location.hash;
+    });
+  });
+
+  /* ---- Tabs: click + full keyboard support (arrows, Home, End) ----
+     Arrow keys follow the visual order, so they are swapped in RTL. */
+  document.querySelectorAll('[data-tabs]').forEach(function (root) {
+    var tabs = Array.prototype.slice.call(root.querySelectorAll('[role="tab"]'));
+    var rtl = getComputedStyle(document.documentElement).direction === 'rtl';
+
+    function select(tab, moveFocus) {
+      tabs.forEach(function (t) {
+        var on = t === tab;
+        t.setAttribute('aria-selected', on ? 'true' : 'false');
+        t.tabIndex = on ? 0 : -1;
+        document.getElementById(t.getAttribute('aria-controls')).hidden = !on;
+      });
+      if (moveFocus) {
+        tab.focus();
+        tab.scrollIntoView({ block: 'nearest', inline: 'nearest' });
+      }
+    }
+
+    tabs.forEach(function (tab, i) {
+      tab.addEventListener('click', function () { select(tab, false); });
+      tab.addEventListener('keydown', function (e) {
+        var fwd = rtl ? 'ArrowLeft' : 'ArrowRight';
+        var back = rtl ? 'ArrowRight' : 'ArrowLeft';
+        var next = null;
+        if (e.key === fwd) next = tabs[(i + 1) % tabs.length];
+        else if (e.key === back) next = tabs[(i - 1 + tabs.length) % tabs.length];
+        else if (e.key === 'Home') next = tabs[0];
+        else if (e.key === 'End') next = tabs[tabs.length - 1];
+        if (next) { e.preventDefault(); select(next, true); }
+      });
+    });
+  });
+
+  /* ---- Reveal on scroll; anything unobserved stays visible ---- */
+  (function () {
+    var items = document.querySelectorAll('.reveal');
+    if (!('IntersectionObserver' in window) ||
+        window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+      items.forEach(function (el) { el.classList.add('is-in'); });
+      return;
+    }
+    var io = new IntersectionObserver(function (entries) {
+      entries.forEach(function (entry) {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-in');
+          io.unobserve(entry.target);
+        }
+      });
+    }, { rootMargin: '0px 0px -12% 0px', threshold: 0.08 });
+    items.forEach(function (el) { io.observe(el); });
+  })();
+</script>
+
+</body>
+</html>
